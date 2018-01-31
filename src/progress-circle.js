@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import * as shape from 'd3-shape'
 import Path from './animated-path'
-import Svg, { G } from 'react-native-svg'
+import Svg, { G, Text } from 'react-native-svg'
 
 class ProgressCircle extends PureComponent {
 
@@ -25,6 +25,8 @@ class ProgressCircle extends PureComponent {
                   endAngle,
                   animate,
                   animateDuration,
+                  innerText,
+                  innerTextProps,
               } = this.props
 
         let { progress } = this.props
@@ -94,6 +96,7 @@ class ProgressCircle extends PureComponent {
                             )
                         })}
                     </G>
+                    <Text {...innerTextProps} >{innerText}</Text>
                 </Svg>
             </View>
         )
@@ -108,6 +111,8 @@ ProgressCircle.propTypes = {
     endAngle: PropTypes.number,
     animate: PropTypes.bool,
     animateDuration: PropTypes.number,
+    innerText: PropTypes.string,
+    innerTextProps: PropTypes.object,
 }
 
 ProgressCircle.defaultProps = {
